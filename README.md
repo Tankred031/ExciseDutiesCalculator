@@ -2,10 +2,6 @@
 
 Frontend web aplikacija za izračun posebnih poreza, trošarina, carine i PDV-a za različite skupine proizvoda.
 
-Projekt je izrađen kao praktična vježba iz HTML-a, CSS-a i JavaScripta, s naglaskom na pretvaranje stvarnih obračunskih pravila i Excel formula u interaktivni web kalkulator.
-
-Aplikacija je zamišljena kao jednostavan pomoćni alat za izračun davanja pri uvozu ili obračunu proizvoda koji podliježu posebnim porezima i trošarinama.
-
 ---
 
 ## Ideja projekta
