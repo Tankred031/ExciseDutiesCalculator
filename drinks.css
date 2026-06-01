@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f0b6c3, #b94666);
+    font-size: 18px;
+    color: #2b1018;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #d9dde1, #b8bec5);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(65, 15, 32, 0.28);
+    border: 1px solid #9fa4aa;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8c1d42;
+    letter-spacing: 1px;
+}
+
+.trosarina,
+.carina,
+.pdv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0b6c3, #c75c7b);
+    border: 1px solid #9d3856;
+    border-radius: 14px;
+}
+
+.podsekcija {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #5b1029;
+}
+
+.zakon {
+    font-size: small;
+    font-weight: bold;
+    color: #3d2029;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #7f2742;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #f3f3f3;
+    color: #241218;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #8c1d42;
+    box-shadow: 0 0 0 3px rgba(140, 29, 66, 0.22);
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: #8c1d42;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #68142f;
+    transform: translateY(-2px);
+}
+
+#rezultat {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #eceff1;
+    border: 1px solid #9fa4aa;
+    border-radius: 12px;
+}
+
+#rezultat strong {
+    color: #7a1838;
+}
+
+.radio-group {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #9d3856;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d9dde1, #c4c9cf);
+}
+
+.radio-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.mini-naslov {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #5b1029;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2b1018;
+}
+
+.radio-options input {
+    width: auto;
+    margin: 0;
+    accent-color: #8c1d42;
+}
+
+a {
+    color: #7a1838;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
