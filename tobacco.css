@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #b88a5d, #6d4024);
+    font-size: 18px;
+    color: #fff4e8;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #9a6a42, #5a321c);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(45, 22, 8, 0.35);
+    border: 1px solid #4b2815;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff4e8;
+    letter-spacing: 1px;
+}
+
+.trosarina,
+.carina,
+.pdv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: linear-gradient(135deg, #b88a5d, #6d4024);
+    border: 1px solid #3f2110;
+    border-radius: 14px;
+}
+
+.podsekcija {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #fff4e8;
+}
+
+.zakon,
+.pomocni-tekst {
+    font-size: small;
+    font-weight: bold;
+    color: #ffe6c8;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #3f2110;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #fff4e8;
+    color: #2d1608;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #ffe0b8;
+    box-shadow: 0 0 0 3px rgba(255, 224, 184, 0.25);
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: #2d1608;
+    color: #fff4e8;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #1c0d04;
+    transform: translateY(-2px);
+}
+
+#rezultat {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #fff4e8;
+    border: 1px solid #3f2110;
+    border-radius: 12px;
+    color: #2d1608;
+}
+
+#rezultat strong {
+    color: #5a321c;
+}
+
+a {
+    color: #fff4e8;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}

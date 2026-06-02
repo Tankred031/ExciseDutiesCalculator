@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trošarine na alkoholna pića</title>
+    <link rel="stylesheet" href="alcohol.css">
+    <script src="alcohol.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>TROŠARINE NA ALKOHOL I ALKOHOLNA PIĆA</h2>
+
+        <div class="trosarina">
+            <p class="podsekcija">Izračun trošarine na alkoholna pića:</p>
+            <p style="font-size: small; font-weight: bold";><em>prema Zakonu o trošarinama na 'NN' 106/18, 156/22</em></p>
+
+
+            <input id="litara" type="number" placeholder="Unesi količinu u litrama">
+
+            <input id="postotakAlkohola" type="number" placeholder="Unesi % alkohola">
+
+            <select id="tarifniTrosarina">
+                <option value="">Odaberi tarifni broj</option>
+                <option value="220310">2203 10 - Pivo od slada</option>
+                <option value="2204">2204 - Vino, mirno i pjenušavo</option>
+                <option value="2205">2205 - Vermuti i ostala aromatizirana vina</option>
+                <option value="2206">2206 - Jabukovače, medovine, mješavine i ostala fermentirana pića</option>
+                <option value="2207">2207 - Nedenaturirani etilni alkohol</option>
+                <option value="2208">2208 - Jaka alkoholna pića</option>
+            </select>
+        </div>
+
+        <div class="pdv">
+            <p class="podsekcija">Izračun PDV-a:</p>
+
+            <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+
+            <div id="rezultat"></div>
+
+            <button id="izracunajBtn">Izračunaj</button>
+        </div>
+
+        <p>
+            <a href="index.html">← Povratak na početnu</a>
+        </p>
+    </div>
+</body>
+
+</html>

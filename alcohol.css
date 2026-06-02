@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f3d184, #d1912c);
+    font-size: 18px;
+    color: #2f1f05;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8df9c, #e1a83b);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(85, 55, 8, 0.28);
+    border: 1px solid #b87918;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4f3105;
+    letter-spacing: 1px;
+}
+
+.trosarina,
+.carina,
+.pdv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f6c75f, #d1912c);
+    border: 1px solid #a86910;
+    border-radius: 14px;
+}
+
+.podsekcija {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #3f2805;
+}
+
+.zakon {
+    font-size: small;
+    font-weight: bold;
+    color: #4a320d;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #80520e;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #fff8df;
+    color: #2f1f05;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #5d3906;
+    box-shadow: 0 0 0 3px rgba(93, 57, 6, 0.2);
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: #80520e;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #5f3b08;
+    transform: translateY(-2px);
+}
+
+#rezultat {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #fff3c4;
+    border: 1px solid #b87918;
+    border-radius: 12px;
+}
+
+#rezultat strong {
+    color: #4f3105;
+}
+
+a {
+    color: #4f3105;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}

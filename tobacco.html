@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trošarine na duhanske proizvode</title>
+    <link rel="stylesheet" href="tobacco.css">
+    <script src="tobacco.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>TROŠARINE NA DUHANSKE PROIZVODE</h2>
+
+        <div class="trosarina">
+            <p class="podsekcija">Izračun trošarine na duhanske proizvode:</p>
+            <p style="font-size: small; font-weight: bold" ;><em>prema Zakonu o trošarinama na 'NN' 106/18, 156/22</em>
+            </p>
+
+            <select id="vrstaProizvoda">
+                <option value="">Odaberi vrstu proizvoda</option>
+                <option value="2401">2401 Neprerađeni duhan</option>
+                <option value="240220">2402 20 Cigarete</option>
+                <option value="240210">2402 10 Cigare i cigarilosi</option>
+                <option value="2403">2403 Rezani duhan / ostali duhan za pušenje</option>
+                <option value="240411">2404 11 Grijani duhanski proizvod</option>
+                <option value="240412">2404 12 E-tekućina</option>
+            </select>
+
+            <div class="trosarina">
+                <p class="podsekcija">Količina:</p>
+
+                <input id="kolicina" type="number" placeholder="Unesi količinu">
+
+                <p class="pomocni-tekst" id="opisKolicine">
+                    Za cigarete/cigare unosi se broj komada, za duhan kg, za e-tekućinu ml.
+                </p>
+            </div>
+
+            <div class="trosarina" id="cigaretePodaci">
+                <p class="podsekcija">Dodatni podaci za cigarete:</p>
+
+                <input id="mpc" type="number" placeholder="Unesi MPC po paketiću">
+                <input id="komadaPoPaketicu" type="number" placeholder="Unesi broj komada po paketiću, npr. 20 ili 25">
+            </div>
+
+            <div class="pdv">
+                <p class="podsekcija">Izračun PDV-a:</p>
+
+                <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+
+                <input id="stopaCarine" type="number" placeholder="Unesi stopu carine u %, ako postoji">
+
+                <div id="rezultat"></div>
+
+                <button id="izracunajBtn">Izračunaj</button>
+            </div>
+
+            <p>
+                <a href="index.html">← Povratak na početnu</a>
+            </p>
+        </div>
+</body>
+
+</html>
