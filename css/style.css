@@ -88,6 +88,24 @@ body {
     color: #fff4e8;
 }
 
+/* F-GAS - zelene / ekološke nijanse */
+.card-fgas {
+    background: linear-gradient(135deg, #b7e4c7, #40916c);
+    color: #081c15;
+}
+
+.card-fgas h2,
+.card-fgas p {
+    color: #081c15;
+}
+
+.card-fgas {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .home-container {
     max-width: 1100px;
     margin: 60px auto 0;

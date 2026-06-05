@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izračun za F-GAS</title>
+    <link rel="stylesheet" href="../css/fgas.css">
+    <script src="../js/fgas.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>IZRAČUN ZA F-GAS</h2>
+
+        <div class="fgas-section">
+            <p class="podsekcija">Izračun CO₂ ekvivalenta:</p>
+
+            <p class="zakon">
+                <em>Izračun prema količini fluoriranog stakleničkog plina i GWP vrijednosti.</em>
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Red</th>
+                        <th>Komada</th>
+                        <th>kg po komadu</th>
+                        <th>Ukupno kg</th>
+                        <th>GWP</th>
+                        <th>CO₂</th>
+                        <th>t CO₂ eq</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablica-redovi">
+                    <!-- Redovi se dodaju JavaScriptom -->
+                </tbody>
+
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="3" class="total-label">UKUPNO</td>
+                        <td class="final-result" id="ukupno_kg_sve">0,00</td>
+                        <td class="empty-cell"></td>
+                        <td class="final-result" id="ukupno_co2_sve">0</td>
+                        <td class="final-result" id="ukupno_tone_sve">0,00</td>
+                        <td class="empty-cell"></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p class="small-note">
+                Svaki red računa svoju kombinaciju: komada × kg × GWP. Možeš dodati najviše 10 redova.
+            </p>
+        </div>
+
+        <p>
+            <a href="index.html">← Povratak na početnu</a>
+        </p>
+    </div>
+    
+    <footer class="page-footer">
+        <em>ExciseDutiesCalculator</em><br>
+        <em>Created by: Tankred Kralj</em><br>
+        <em>© 2026 Tankred Kralj. Sva prava pridržana.</em>
+    </footer>
+
+</body>
+
+</html>
