@@ -17,10 +17,6 @@ function formatBrojDecimalno(broj) {
     return broj.toFixed(2).replace(".", ",");
 }
 
-function formatCijeliBroj(broj) {
-    return broj.toLocaleString("hr-HR");
-}
-
 function napraviRedak() {
     const noviRed = document.createElement("tr");
 
@@ -42,8 +38,6 @@ function napraviRedak() {
                 ${gwpOpcije}
             </select>
         </td>
-
-        <td class="result-highlight co2">0</td>
 
         <td class="final-result tone">0,00</td>
 
@@ -102,7 +96,6 @@ function izracunaj() {
     const redovi = document.querySelectorAll("#tablica-redovi tr");
 
     let ukupnoKgSve = 0;
-    let ukupnoCo2Sve = 0;
     let ukupnoToneSve = 0;
 
     redovi.forEach(red => {
@@ -115,17 +108,26 @@ function izracunaj() {
         const tone = co2 / 1000;
 
         red.querySelector(".ukupno-kg").innerText = formatBrojDecimalno(ukupnoKg);
-        red.querySelector(".co2").innerText = formatCijeliBroj(co2);
         red.querySelector(".tone").innerText = formatBrojDecimalno(tone);
 
         ukupnoKgSve += ukupnoKg;
-        ukupnoCo2Sve += co2;
         ukupnoToneSve += tone;
     });
 
     document.getElementById("ukupno_kg_sve").innerText = formatBrojDecimalno(ukupnoKgSve);
-    document.getElementById("ukupno_co2_sve").innerText = formatCijeliBroj(ukupnoCo2Sve);
     document.getElementById("ukupno_tone_sve").innerText = formatBrojDecimalno(ukupnoToneSve);
+}
+
+function printCertifikat() {
+    const pdfProzor = window.open("../documents/fgas-certifikat.pdf", "_blank");
+
+    if (pdfProzor) {
+        pdfProzor.addEventListener("load", function () {
+            pdfProzor.print();
+        });
+    } else {
+        alert("Preglednik je blokirao otvaranje PDF-a. Dopusti popup prozore za ovu stranicu.");
+    }
 }
 
 window.addEventListener("load", function () {

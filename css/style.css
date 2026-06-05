@@ -121,6 +121,12 @@ body {
     color: #2b2118;
 }
 
+footer {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media (max-width: 800px) {
     .card-wrapper {
         grid-template-columns: 1fr;
