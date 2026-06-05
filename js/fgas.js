@@ -24,11 +24,11 @@ function napraviRedak() {
         <td class="result-highlight broj-reda">1</td>
 
         <td>
-            <input type="number" class="komada" value="0" min="0" oninput="izracunaj()">
+            <input type="type="text" inputmode="decimal"" class="komada" value="0" min="0" oninput="izracunaj()">
         </td>
 
         <td>
-            <input type="number" class="kg" value="0" min="0" step="0.01" oninput="izracunaj()">
+            <input type="type="text" inputmode="decimal"" class="kg" value="0" min="0" step="0.01" oninput="izracunaj()">
         </td>
 
         <td class="result-highlight ukupno-kg">0,00</td>

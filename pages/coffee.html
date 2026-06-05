@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kava</title>
     <link rel="stylesheet" href="../css/coffee.css">
+    <script src="../js/utilities.js" defer></script>
     <script src="../js/coffee.js" defer></script>
 </head>
 
@@ -19,7 +20,7 @@
             <p style="font-size: small; font-weight: bold" ;><em>prema Zakonu o posebnom porezu na kavu i bezalkoholna
                     pića 'NN' 1/05, 121/19, 22/20</em></p>
 
-            <input id="tezinaKave" type="number" placeholder="Unesi neto težinu u kg">
+            <input id="tezinaKave" type="text" inputmode="decimal" placeholder="Unesi neto težinu u kg">
 
             <select name="" id="tarifniTrosarina">
                 <option class="subtitle" value="">Odaberi tarifni broj</option>
@@ -36,7 +37,7 @@
         <div class="carina">
             <p class="podsekcija">Izračun carine na kavu:</p>
 
-            <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+            <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
 
             <select name="" id="tarifniCarina">
                 <option class="subtitle" value="">Odaberi vrstu proizvoda</option>
@@ -67,6 +68,7 @@
         <em>Created by: Tankred Kralj</em><br>  
     </footer>
 
+    
 </body>
 
 </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trošarine na duhanske proizvode</title>
     <link rel="stylesheet" href="../css/tobacco.css">
+    <script src="../js/utilities.js" defer></script>
     <script src="../js/tobacco.js" defer></script>
 </head>
 
@@ -31,7 +32,7 @@
             <div class="trosarina">
                 <p class="podsekcija">Količina:</p>
 
-                <input id="kolicina" type="number" placeholder="Unesi količinu">
+                <input id="kolicina" type="text" inputmode="decimal" placeholder="Unesi količinu">
 
                 <p class="pomocni-tekst" id="opisKolicine">
                     Za cigarete/cigare unosi se broj komada, za duhan kg, za e-tekućinu ml.
@@ -41,17 +42,16 @@
             <div class="trosarina" id="cigaretePodaci">
                 <p class="podsekcija">Dodatni podaci za cigarete:</p>
 
-                <input id="mpc" type="number" placeholder="Unesi MPC po paketiću">
-                <input id="komadaPoPaketicu" type="number" placeholder="Unesi broj komada po paketiću, npr. 20 ili 25">
+                <input id="mpc" type="text" inputmode="decimal" placeholder="Unesi MPC po paketiću">
+                <input id="komadaPoPaketicu" type="text" inputmode="decimal" placeholder="Unesi broj komada po paketiću, npr. 20 ili 25">
             </div>
 
             <div class="pdv">
                 <p class="podsekcija">Izračun PDV-a:</p>
 
-                <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+                <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
 
-                <input id="stopaCarine" type="number" placeholder="Unesi stopu carine u %, ako postoji">
-
+                                
                 <div id="rezultat"></div>
 
                 <button id="izracunajBtn">Izračunaj</button>
@@ -61,11 +61,13 @@
                 <a href="../index.html">← Povratak na početnu</a>
             </p>
         </div>
-        
+
         <footer class="page-footer">
-        <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
-        <em>Created by: Tankred Kralj</em><br>  
-    </footer>
+            <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
+            <em>Created by: Tankred Kralj</em><br>
+        </footer>
+
+
 </body>
 
 </html>

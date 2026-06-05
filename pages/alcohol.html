@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trošarine na alkoholna pića</title>
     <link rel="stylesheet" href="../css/alcohol.css">
+    <script src="../js/utilities.js" defer></script>
     <script src="../js/alcohol.js" defer></script>
 </head>
 
@@ -19,9 +20,9 @@
             </p>
 
 
-            <input id="litara" type="number" placeholder="Unesi količinu u litrama">
+            <input id="litara" type="text" inputmode="decimal" placeholder="Unesi količinu u litrama">
 
-            <input id="postotakAlkohola" type="number" placeholder="Unesi % alkohola">
+            <input id="postotakAlkohola" type="text" inputmode="decimal" placeholder="Unesi % alkohola">
 
             <select id="tarifniTrosarina">
                 <option value="">Odaberi tarifni broj</option>
@@ -37,7 +38,7 @@
         <div class="pdv">
             <p class="podsekcija">Izračun PDV-a:</p>
 
-            <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+            <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
 
             <div id="rezultat"></div>
 
@@ -53,6 +54,7 @@
         <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
         <em>Created by: Tankred Kralj</em><br>  
     </footer>
+    
 </body>
 
 </html>

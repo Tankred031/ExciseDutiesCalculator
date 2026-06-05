@@ -1,5 +1,5 @@
 Folder PATH listing
-Volume serial number is 000000F0 B6DE:A831
+Volume serial number is AE43-A6AC
 C:.
 |   .gitattributes
 |   .gitignore
@@ -7,6 +7,9 @@ C:.
 |   README.md
 |   struktura.txt
 |   
++---assets
+|       duty-free.png
+|       
 +---css
 |       alcohol.css
 |       coffee.css
@@ -15,15 +18,13 @@ C:.
 |       style.css
 |       tobacco.css
 |       
-+---documents
-|       fgas-certifikat.pdf
-|       
 +---js
 |       alcohol.js
 |       coffee.js
 |       drinks.js
 |       fgas.js
 |       tobacco.js
+|       utilities.js
 |       
 \---pages
         alcohol.html

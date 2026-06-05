@@ -24,48 +24,32 @@ const stopeMetilKsantin = {
     sirup: 74.32
 };
 
-function dohvatiStopuSecera(vrsta, sadrzajSecera) {
-    if (vrsta === "pice") {
-        if (sadrzajSecera <= 2) return 0;
-        if (sadrzajSecera <= 5) return 1.33;
-        if (sadrzajSecera <= 8) return 3.98;
-        return 7.96;
-    }
-
-    if (vrsta === "sirup") {
-        if (sadrzajSecera <= 14) return 0;
-        if (sadrzajSecera <= 35) return 9.29;
-        if (sadrzajSecera <= 56) return 27.87;
-        return 55.74;
-    }
-
-    return 0;
-}
+const kategorijeSecera = {
+    pice: [
+        { tekst: "do 2 g/100 ml", stopa: 0 },
+        { tekst: "više od 2 do 5 g/100 ml", stopa: 1.33 },
+        { tekst: "više od 5 do 8 g/100 ml", stopa: 3.98 },
+        { tekst: "više od 8 g/100 ml", stopa: 7.96 }
+    ],
+    sirup: [
+        { tekst: "do 14 g/100 ml", stopa: 0 },
+        { tekst: "više od 14 do 35 g/100 ml", stopa: 9.29 },
+        { tekst: "više od 35 do 56 g/100 ml", stopa: 27.87 },
+        { tekst: "više od 56 g/100 ml", stopa: 55.74 }
+    ]
+};
 
 function dohvatiNazivVrste(vrsta) {
-    if (vrsta === "pice") {
-        return "sok / gotovo piće";
-    }
-
-    if (vrsta === "sirup") {
-        return "sirup / koncentrat";
-    }
+    if (vrsta === "pice") return "sok / gotovo piće";
+    if (vrsta === "sirup") return "sirup / koncentrat";
 
     return "nije odabrano";
 }
 
 function dohvatiNazivOsnove(osnova) {
-    if (osnova === "secer") {
-        return "šećer";
-    }
-
-    if (osnova === "taurin") {
-        return "taurin";
-    }
-
-    if (osnova === "metilKsantin") {
-        return "metil-ksantin";
-    }
+    if (osnova === "secer") return "šećer";
+    if (osnova === "taurin") return "taurin";
+    if (osnova === "metilKsantin") return "metil-ksantin";
 
     return "nije odabrano";
 }
@@ -81,16 +65,89 @@ function dohvatiNazivTarifnogBroja(tarifniBroj) {
     return "nije odabrano";
 }
 
+function dohvatiOdabranuVrstu() {
+    const odabraniRadio = document.querySelector('input[name="tipProizvoda"]:checked');
+
+    if (!odabraniRadio) {
+        return "";
+    }
+
+    return odabraniRadio.value;
+}
+
+function napuniOpcijeSadrzaja() {
+    const vrsta = dohvatiOdabranuVrstu();
+    const osnova = osnovaObracuna.value;
+
+    sadrzajInput.innerHTML = "";
+
+    if (!vrsta || !osnova) {
+        sadrzajInput.innerHTML = `<option value="">Odaberi kategoriju</option>`;
+        return;
+    }
+
+    if (vrstaProizvoda.value === "220291") {
+        sadrzajInput.innerHTML = `<option value="0">Nije primjenjivo za bezalkoholno pivo</option>`;
+        return;
+    }
+
+    if (osnova === "secer") {
+        sadrzajInput.innerHTML = `<option value="">Odaberi udio šećera</option>`;
+
+        kategorijeSecera[vrsta].forEach(kategorija => {
+            sadrzajInput.innerHTML += `
+                <option value="${kategorija.stopa}">
+                    ${kategorija.tekst} — ${formatBroj(kategorija.stopa)} €/hl
+                </option>
+            `;
+        });
+    }
+
+    if (osnova === "taurin") {
+        const stopa = stopeTaurin[vrsta] || 0;
+
+        sadrzajInput.innerHTML = `
+            <option value="${stopa}">
+                Taurin — ${formatBroj(stopa)} €/hl
+            </option>
+        `;
+    }
+
+    if (osnova === "metilKsantin") {
+        const stopa = stopeMetilKsantin[vrsta] || 0;
+
+        sadrzajInput.innerHTML = `
+            <option value="${stopa}">
+                Metil-ksantin — ${formatBroj(stopa)} €/hl
+            </option>
+        `;
+    }
+}
+
+function provjeriBezalkoholnoPivo() {
+    if (vrstaProizvoda.value === "220291") {
+        osnovaObracuna.disabled = true;
+        sadrzajInput.disabled = true;
+
+        sadrzajInput.innerHTML = `
+            <option value="0">Nije primjenjivo za bezalkoholno pivo</option>
+        `;
+    } else {
+        osnovaObracuna.disabled = false;
+        sadrzajInput.disabled = false;
+
+        napuniOpcijeSadrzaja();
+    }
+}
+
 function izracunajDavanja() {
-    const litara = Number(litaraInput.value);
+    const litara = procitajBroj(litaraInput);
     const hektolitara = litara / 100;
 
-    const vrsta = document.querySelector('input[name="tipProizvoda"]:checked').value;
+    const vrsta = dohvatiOdabranuVrstu();
     const tarifniBroj = vrstaProizvoda.value;
-
     const osnova = osnovaObracuna.value;
-    const sadrzaj = Number(sadrzajInput.value);
-    const vrijednostRobe = Number(vrijednostRobeInput.value);
+    const vrijednostRobe = NumprocitajBrojber(vrijednostRobeInput);
 
     const stopaVolumen = stopeVolumen[vrsta] || 0;
     const iznosVolumen = hektolitara * stopaVolumen;
@@ -110,14 +167,7 @@ function izracunajDavanja() {
             </p>
         `;
     } else {
-        if (osnova === "secer") {
-            stopaSastav = dohvatiStopuSecera(vrsta, sadrzaj);
-        } else if (osnova === "taurin") {
-            stopaSastav = stopeTaurin[vrsta] || 0;
-        } else if (osnova === "metilKsantin") {
-            stopaSastav = stopeMetilKsantin[vrsta] || 0;
-        }
-
+        stopaSastav = procitajBroj(sadrzajInput);
         iznosSastav = hektolitara * stopaSastav;
     }
 
@@ -131,52 +181,30 @@ function izracunajDavanja() {
     const ukupnaDavanja = posebanPorez + iznosCarine + iznosPDV;
 
     rezultat.innerHTML = `
-        <p>Tarifni broj: <strong>${dohvatiNazivTarifnogBroja(tarifniBroj)}</strong></p>
-        <p>Vrsta proizvoda: <strong>${dohvatiNazivVrste(vrsta)}</strong></p>
-        <p>Osnova obračuna: <strong>${tarifniBroj === "220291" ? "nije primjenjivo" : dohvatiNazivOsnove(osnova)}</strong></p>
+        <p>Poseban porez prema volumenu: ${formatBroj(iznosVolumen)} €</p>
+        <p>Poseban porez prema sadržaju šećera: ${formatBroj(iznosSastav)} €</p>
+        <p>Ukupno poseban porez: ${formatBroj(posebanPorez)} €</p>
 
         <hr>
 
-        <p>Poseban porez prema volumenu: ${iznosVolumen.toFixed(2)} €</p>
-        <p>Poseban porez prema sastavu: ${iznosSastav.toFixed(2)} €</p>
-        <p><strong>Ukupno poseban porez: ${posebanPorez.toFixed(2)} €</strong></p>
+        <p>Ukupni iznos carine: ${formatBroj(iznosCarine)} €</p>
+        <p>PDV: ${formatBroj(iznosPDV)} €</p>
 
         <hr>
 
-        <p>Carina: ${iznosCarine.toFixed(2)} €</p>
-        <p>PDV: ${iznosPDV.toFixed(2)} €</p>
-
-        <hr>
-
-        <p><strong>Ukupna davanja: ${ukupnaDavanja.toFixed(2)} €</strong></p>
+        <p><strong>Ukupna davanja: ${formatBroj(ukupnaDavanja)} €</strong></p>
 
         ${napomena}
     `;
 }
 
-function promijeniPlaceholder() {
-    if (osnovaObracuna.value === "secer") {
-        sadrzajInput.placeholder = "Unesi sadržaj šećera u g/100 ml";
-    } else if (osnovaObracuna.value === "taurin") {
-        sadrzajInput.placeholder = "Unesi sadržaj taurina";
-    } else if (osnovaObracuna.value === "metilKsantin") {
-        sadrzajInput.placeholder = "Unesi sadržaj metil-ksantina";
-    }
-}
-
-function provjeriBezalkoholnoPivo() {
-    if (vrstaProizvoda.value === "220291") {
-        osnovaObracuna.disabled = true;
-        sadrzajInput.disabled = true;
-        sadrzajInput.value = "";
-        sadrzajInput.placeholder = "Nije primjenjivo za bezalkoholno pivo";
-    } else {
-        osnovaObracuna.disabled = false;
-        sadrzajInput.disabled = false;
-        promijeniPlaceholder();
-    }
-}
-
-osnovaObracuna.addEventListener("change", promijeniPlaceholder);
+osnovaObracuna.addEventListener("change", napuniOpcijeSadrzaja);
 vrstaProizvoda.addEventListener("change", provjeriBezalkoholnoPivo);
+
+document.querySelectorAll('input[name="tipProizvoda"]').forEach(radio => {
+    radio.addEventListener("change", napuniOpcijeSadrzaja);
+});
+
 izracunajBtn.addEventListener("click", izracunajDavanja);
+
+napuniOpcijeSadrzaja();

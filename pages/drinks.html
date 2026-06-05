@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poseban porez na bezalkoholna pića</title>
     <link rel="stylesheet" href="../css/drinks.css">
+    <script src="../js/utilities.js" defer></script>
     <script src="../js/drinks.js" defer></script>
+
 </head>
 
 <body>
@@ -15,10 +17,10 @@
 
         <div class="trosarina">
             <p class="podsekcija">Izračun posebnog poreza na bezalkoholna pića:</p>
-            <p style="font-size: small; font-weight: bold" ;><em>prema Zakonu o posebnom porezu na kavu i bezalkoholna
+            <p style="font-size: small; font-weight: bold";><em>prema Zakonu o posebnom porezu na kavu i bezalkoholna
                     pića 'NN' 1/05, 121/19, 22/20</em></p>
 
-            <input id="litara" type="number" placeholder="Unesi količinu u litrama">
+            <input id="litara" type="text" inputmode="decimal" placeholder="Unesi količinu u litrama">
 
             <div class="radio-group">
                 <p class="mini-naslov">Vrsta proizvoda:</p>
@@ -56,13 +58,15 @@
                 <option value="metilKsantin">Metil-ksantin</option>
             </select>
 
-            <input id="sadrzaj" type="number" placeholder="Unesi sadržaj šećera u g/100 ml">
+            <select id="sadrzaj">
+                <option value="">Odaberi kategoriju</option>
+            </select>
         </div>
 
         <div class="carina">
-            <p class="podsekcija">Izračun carine:</p>
+            <p class="podsekcija">Unesi vrijednost robe:</p>
 
-            <input id="vrijednostRobe" type="number" placeholder="Unesi vrijednost robe u €">
+            <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
         </div>
 
         <div class="pdv">
@@ -77,11 +81,13 @@
             <a href="../index.html">← Povratak na početnu</a>
         </p>
     </div>
-    
+
     <footer class="page-footer">
         <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
-        <em>Created by: Tankred Kralj</em><br>  
+        <em>Created by: Tankred Kralj</em><br>
     </footer>
+
+
 </body>
 
 </html>

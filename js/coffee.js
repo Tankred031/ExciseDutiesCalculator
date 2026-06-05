@@ -25,8 +25,8 @@ const stopeCarine = {
 
 
 function izracunajDavanja() {
-    const tezina = Number(tezinaKave.value);
-    const vrijednost = Number(vrijednostRobe.value);
+    const tezina = procitajBroj(tezinaKave);
+    const vrijednost = procitajBroj(vrijednostRobe);
 
     const odabranaTrosarina = tarifniTrosarina.value;
     const odabranaCarina = tarifniCarina.value;

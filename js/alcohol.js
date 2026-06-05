@@ -60,12 +60,12 @@ function izracunajTrosarinu(tarifniBroj, hektolitara, postotakAlkohola) {
 }
 
 function izracunajDavanja() {
-    const litara = Number(litaraInput.value);
+    const litara = procitajBroj(litaraInput);
     const hektolitara = litara / 100;
 
-    const postotakAlkohola = Number(postotakAlkoholaInput.value);
+    const postotakAlkohola = procitajBroj(postotakAlkoholaInput);
     const tarifniBroj = tarifniTrosarina.value;
-    const vrijednostRobe = Number(vrijednostRobeInput.value);
+    const vrijednostRobe = procitajBroj(vrijednostRobeInput);
 
     const obracun = izracunajTrosarinu(
         tarifniBroj,
@@ -80,28 +80,14 @@ function izracunajDavanja() {
 
     const ukupnaDavanja = iznosTrosarine + iznosPDV;
 
-    rezultat.innerHTML = `
-        <p>Tarifni broj: <strong>${dohvatiNazivTarifnogBroja(tarifniBroj)}</strong></p>
-        <p>Količina: <strong>${litara.toFixed(2)} l</strong></p>
-        <p>Hektolitara: <strong>${hektolitara.toFixed(2)} hl</strong></p>
-        <p>Alkoholna jakost: <strong>${postotakAlkohola.toFixed(2)}%</strong></p>
+   rezultat.innerHTML = `
+    <p>Trošarina: ${formatBroj(iznosTrosarine)} €</p>
+    <p>PDV: ${formatBroj(iznosPDV)} €</p>
 
-        <hr>
+    <hr>
 
-        <p>Obračun: ${obracun.opisObracuna}</p>
-        <p>Primijenjena stopa: ${obracun.stopa.toFixed(2)} €</p>
-        <p><strong>Trošarina: ${iznosTrosarine.toFixed(2)} €</strong></p>
-
-        <hr>
-
-        <p>Vrijednost robe: ${vrijednostRobe.toFixed(2)} €</p>
-        <p>Osnovica za PDV: ${osnovicaZaPDV.toFixed(2)} €</p>
-        <p>PDV: ${iznosPDV.toFixed(2)} €</p>
-
-        <hr>
-
-        <p><strong>Ukupna davanja: ${ukupnaDavanja.toFixed(2)} €</strong></p>
-    `;
+    <p><strong>Ukupna davanja: ${formatBroj(ukupnaDavanja)} €</strong></p>
+`;
 }
 
 izracunajBtn.addEventListener("click", izracunajDavanja);
