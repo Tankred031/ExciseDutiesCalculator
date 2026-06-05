@@ -1,17 +1,34 @@
 Folder PATH listing
-Volume serial number is 000000B4 AE43:A6AC
+Volume serial number is 000000F0 B6DE:A831
 C:.
-    .gitattributes
-    coffee.css
-    coffee.html
-    coffee.js
-    drinks.css
-    drinks.html
-    drinks.js
-    index.html
-    README.md
-    struktura.txt
-    style.css
-    
-No subfolders exist 
-
+|   .gitattributes
+|   .gitignore
+|   index.html
+|   README.md
+|   struktura.txt
+|   
++---css
+|       alcohol.css
+|       coffee.css
+|       drinks.css
+|       fgas.css
+|       style.css
+|       tobacco.css
+|       
++---documents
+|       fgas-certifikat.pdf
+|       
++---js
+|       alcohol.js
+|       coffee.js
+|       drinks.js
+|       fgas.js
+|       tobacco.js
+|       
+\---pages
+        alcohol.html
+        coffee.html
+        drinks.html
+        fgas.html
+        tobacco.html
+        
