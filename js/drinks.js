@@ -147,7 +147,7 @@ function izracunajDavanja() {
     const vrsta = dohvatiOdabranuVrstu();
     const tarifniBroj = vrstaProizvoda.value;
     const osnova = osnovaObracuna.value;
-    const vrijednostRobe = NumprocitajBrojber(vrijednostRobeInput);
+    const vrijednostRobe = procitajBroj(vrijednostRobeInput);
 
     const stopaVolumen = stopeVolumen[vrsta] || 0;
     const iznosVolumen = hektolitara * stopaVolumen;
