@@ -92,6 +92,17 @@ function obnoviBrojeveRedova() {
     });
 }
 
+function procitajDecimalniBroj(vrijednost) {
+    const ociscenaVrijednost = String(vrijednost)
+        .trim()
+        .replace(/\s/g, "")
+        .replace(",", ".");
+
+    const broj = Number.parseFloat(ociscenaVrijednost);
+
+    return Number.isFinite(broj) ? broj : 0;
+}
+
 function izracunaj() {
     const redovi = document.querySelectorAll("#tablica-redovi tr");
 
@@ -99,9 +110,17 @@ function izracunaj() {
     let ukupnoToneSve = 0;
 
     redovi.forEach(red => {
-        const komada = parseFloat(red.querySelector(".komada").value) || 0;
-        const kg = parseFloat(red.querySelector(".kg").value) || 0;
-        const gwp = parseFloat(red.querySelector(".gwp").value) || 0;
+        const komada = procitajDecimalniBroj(
+            red.querySelector(".komada").value
+        );
+
+        const kg = procitajDecimalniBroj(
+            red.querySelector(".kg").value
+        );
+
+        const gwp = procitajDecimalniBroj(
+            red.querySelector(".gwp").value
+        );
 
         const ukupnoKg = komada * kg;
         const co2 = ukupnoKg * gwp;

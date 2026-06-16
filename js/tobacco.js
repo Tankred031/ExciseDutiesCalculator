@@ -65,7 +65,7 @@ function dohvatiNazivProizvoda(vrsta) {
 
 function izracunajTrosarinu() {
     const vrsta = vrstaProizvoda.value;
-    const kolicina = Number(kolicinaInput.value);
+    const kolicina = procitajBroj(kolicinaInput);
 
     let iznosTrosarine = 0;
     let dodatnaNapomena = "";
@@ -148,7 +148,7 @@ function izracunajCarinu(tarifniBroj, vrijednostRobe, kolicina) {
 function izracunajDavanja() {
     const tarifniBroj = vrstaProizvoda.value;
     const kolicina = procitajBroj(kolicinaInput);
-    const vrijednostRobe = NumbprocitajBrojer(vrijednostRobeInput);
+    const vrijednostRobe = procitajBroj(vrijednostRobeInput);
 
     const obracun = izracunajTrosarinu();
 
