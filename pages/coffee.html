@@ -4,71 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kava</title>
-    <link rel="stylesheet" href="../css/coffee.css">
+    <title>Poseban porez na kavu</title>
+    <link rel="icon" href="../assets/duty-free.png" type="image/png">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <script src="../js/rates.js" defer></script>
     <script src="../js/utilities.js" defer></script>
     <script src="../js/coffee.js" defer></script>
 </head>
 
-<body>
+<body data-theme="coffee">
+    <main>
     <div class="container">
-        <h2>POSEBAN POREZ NA KAVU</h2>
+        <a class="nav-back" href="../index.html">← Povratak na početnu</a>
+        <h1>Poseban porez na kavu</h1>
 
+        <form id="kalkulator" novalidate>
+            <section class="sekcija">
+                <p class="podsekcija">Poseban porez na kavu</p>
+                <p class="zakon">prema Zakonu o posebnom porezu na kavu i bezalkoholna pića 'NN' 1/05, 121/19, 22/20</p>
 
-        <div class="trosarina">
-            <p class="podsekcija">Izračun posebnog poreza na kavu:</p>
-            <p style="font-size: small; font-weight: bold" ;><em>prema Zakonu o posebnom porezu na kavu i bezalkoholna
-                    pića 'NN' 1/05, 121/19, 22/20</em></p>
+                <div class="polje">
+                    <label for="tezinaKave">Neto težina (kg)</label>
+                    <input id="tezinaKave" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 1250,5">
+                </div>
 
-            <input id="tezinaKave" type="text" inputmode="decimal" placeholder="Unesi neto težinu u kg">
+                <div class="polje">
+                    <label for="tarifniTrosarina">Tarifni broj za poseban porez</label>
+                    <select id="tarifniTrosarina">
+                        <option value="">Odaberi tarifni broj</option>
+                        <option value="090121">0901 21 - Pržena kava kofeinska</option>
+                        <option value="090122">0901 22 - Pržena kava beskofeinska</option>
+                        <option value="090190">0901 90 - Nadomjesci kave</option>
+                        <option value="210111">2101 11 - Ekstrakti i koncentrati kave</option>
+                        <option value="210112">2101 12 - Pripravci na osnovi ekstrakata kave</option>
+                        <option value="210120">2101 20 - Pripravci na osnovi ekstrakata čaja</option>
+                    </select>
+                </div>
+            </section>
 
-            <select name="" id="tarifniTrosarina">
-                <option class="subtitle" value="">Odaberi tarifni broj</option>
-                <option value="090121">0901 21 - Pržena kava kofeinska</option>
-                <option value="090122">0901 22 - Pržena kava beskofeinska</option>
-                <option value="090190">0901 90 - Nadomjesci kave</option>
-                <option value="210111">2101 11 - Ekstrakti i koncentrati kave</option>
-                <option value="210112">2101 12 - Pripravci na osnovi ektrakata kave</option>
-                <option value="210120">2101 20 - Pripravci na osnovi ekstrakata čaja</option>
-            </select>
-        </div>
+            <section class="sekcija">
+                <p class="podsekcija">Carina na kavu</p>
 
+                <div class="polje">
+                    <label for="vrijednostRobe">Vrijednost robe (€)</label>
+                    <input id="vrijednostRobe" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 3500,00">
+                </div>
 
-        <div class="carina">
-            <p class="podsekcija">Izračun carine na kavu:</p>
+                <div class="polje">
+                    <label for="tarifniCarina">Vrsta proizvoda (carinska stopa)</label>
+                    <select id="tarifniCarina">
+                        <option value="">Odaberi vrstu proizvoda</option>
+                        <option value="090121">0901 21 Kava kofeinska</option>
+                        <option value="090122">0901 22 Kave beskofeinske</option>
+                        <option value="090190">0901 90 Nadomjesci kave</option>
+                        <option value="210111">2101 11 Kave beskofeinske</option>
+                        <option value="210112">2101 12 Nadomjesci kave</option>
+                        <option value="090210">0902 10 Zeleni čaj</option>
+                        <option value="210120">2101 20 Pripravci od zelenog čaja</option>
+                    </select>
+                </div>
+            </section>
 
-            <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
+            <section class="sekcija">
+                <p class="podsekcija">Ukupna davanja (s PDV-om)</p>
 
-            <select name="" id="tarifniCarina">
-                <option class="subtitle" value="">Odaberi vrstu proizvoda</option>
-                <option value="090121">0901 21 Kava kofeinska</option>
-                <option value="090122">0901 22 Kave beskofeinske</option>
-                <option value="090190">0901 90 Nadomjesci kave</option>
-                <option value="210111">2101 11 Kave beskofeinske</option>
-                <option value="210112">2101 12 Nadomjesci kave</option>
-                <option value="090210">0902 10 Zeleni čaj</option>
-                <option value="210120">2101 20 Pripravci od zelenog čaja</option>
-            </select>
-        </div>
+            <div id="rezultat" class="rezultat rezultat-prazno" role="status" aria-live="polite">Unesi podatke i klikni „Izračunaj“.</div>
 
-        <div class="pdv">
-            <p class="podsekcija">Izračun PDV-a na posebni porez na kavu:</p>
-
-            <div id="rezultat"></div>
-
-            <button id="izracunajBtn">Izračunaj</button>
-        </div>
-        <p>
-            <a href="../index.html">← Povratak na početnu</a>
-        </p>
+            <button type="submit" class="gumb-izracunaj">Izračunaj</button>
+            </section>
+        </form>
     </div>
+    </main>
 
     <footer class="page-footer">
-        <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
-        <em>Created by: Tankred Kralj</em><br>  
+        <p>Alat je pomoćni. Stope i propise provjeri u službenim izvorima.</p>
+        <p><em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em></p>
+        <p><em>Created by: Tankred Kralj</em></p>
     </footer>
-
-    
 </body>
 
 </html>

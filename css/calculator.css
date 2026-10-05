@@ -1,0 +1,683 @@
+/* ------------------------------------------------------------------
+ * Zajednički stil svih kalkulatora.
+ * Boje po kategoriji definirane su kao varijable u [data-theme] blokovima.
+ * ------------------------------------------------------------------ */
+
+:root {
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --radius: 16px;
+    --danger: #a4161a;
+    --danger-bg: #fdecec;
+}
+
+/* KAVA */
+[data-theme="coffee"] {
+    --bg-1: #e8d2b8;
+    --bg-2: #c49a6c;
+    --card-1: #f4e4d0;
+    --card-2: #ddb98e;
+    --card-border: #b88556;
+    --card-shadow: rgba(55, 31, 13, 0.25);
+    --section-1: #e8c79f;
+    --section-2: #c99663;
+    --section-border: #9f6b3e;
+    --text: #2b1b10;
+    --heading: #4b2c16;
+    --sub: #3b2413;
+    --muted: #4a321f;
+    --input-border: #7b4f2b;
+    --input-bg: #fff8ef;
+    --input-text: #2b1b10;
+    --focus: #5d3519;
+    --focus-ring: rgba(93, 53, 25, 0.25);
+    --btn: #6f4725;
+    --btn-hover: #4f3018;
+    --btn-text: #ffffff;
+    --result-bg: #fff1df;
+    --result-border: #b88556;
+    --result-text: #2b1b10;
+    --link: #4b2c16;
+}
+
+/* BEZALKOHOLNA PIĆA */
+[data-theme="drinks"] {
+    --bg-1: #f0b6c3;
+    --bg-2: #b94666;
+    --card-1: #d9dde1;
+    --card-2: #b8bec5;
+    --card-border: #9fa4aa;
+    --card-shadow: rgba(65, 15, 32, 0.28);
+    --section-1: #f0b6c3;
+    --section-2: #c75c7b;
+    --section-border: #9d3856;
+    --text: #2b1018;
+    --heading: #8c1d42;
+    --sub: #5b1029;
+    --muted: #3d2029;
+    --input-border: #7f2742;
+    --input-bg: #f7f7f7;
+    --input-text: #241218;
+    --focus: #8c1d42;
+    --focus-ring: rgba(140, 29, 66, 0.25);
+    --btn: #8c1d42;
+    --btn-hover: #68142f;
+    --btn-text: #ffffff;
+    --result-bg: #eceff1;
+    --result-border: #9fa4aa;
+    --result-text: #241218;
+    --link: #7a1838;
+}
+
+/* ALKOHOL */
+[data-theme="alcohol"] {
+    --bg-1: #f3d184;
+    --bg-2: #d1912c;
+    --card-1: #f8df9c;
+    --card-2: #e1a83b;
+    --card-border: #b87918;
+    --card-shadow: rgba(85, 55, 8, 0.28);
+    --section-1: #f6c75f;
+    --section-2: #d1912c;
+    --section-border: #a86910;
+    --text: #2f1f05;
+    --heading: #4f3105;
+    --sub: #3f2805;
+    --muted: #4a320d;
+    --input-border: #80520e;
+    --input-bg: #fff8df;
+    --input-text: #2f1f05;
+    --focus: #5d3906;
+    --focus-ring: rgba(93, 57, 6, 0.28);
+    --btn: #80520e;
+    --btn-hover: #5f3b08;
+    --btn-text: #ffffff;
+    --result-bg: #fff3c4;
+    --result-border: #b87918;
+    --result-text: #2f1f05;
+    --link: #4f3105;
+}
+
+/* DUHAN */
+[data-theme="tobacco"] {
+    --bg-1: #b88a5d;
+    --bg-2: #6d4024;
+    --card-1: #8a5a36;
+    --card-2: #4f2b18;
+    --card-border: #4b2815;
+    --card-shadow: rgba(45, 22, 8, 0.35);
+    --section-1: #9c6d43;
+    --section-2: #623a21;
+    --section-border: #3f2110;
+    --text: #fff4e8;
+    --heading: #fff4e8;
+    --sub: #fff4e8;
+    --muted: #ffe6c8;
+    --input-border: #3f2110;
+    --input-bg: #fff4e8;
+    --input-text: #2d1608;
+    --focus: #ffe0b8;
+    --focus-ring: rgba(255, 224, 184, 0.35);
+    --btn: #2d1608;
+    --btn-hover: #1c0d04;
+    --btn-text: #fff4e8;
+    --result-bg: #fff4e8;
+    --result-border: #3f2110;
+    --result-text: #2d1608;
+    --link: #fff4e8;
+}
+
+/* F-GAS */
+[data-theme="fgas"] {
+    --bg-1: #b7e4c7;
+    --bg-2: #40916c;
+    --card-1: #d8f3dc;
+    --card-2: #95d5b2;
+    --card-border: #74c69d;
+    --card-shadow: rgba(8, 28, 21, 0.28);
+    --section-1: #b7e4c7;
+    --section-2: #74c69d;
+    --section-border: #40916c;
+    --text: #081c15;
+    --heading: #1b4332;
+    --sub: #1b4332;
+    --muted: #1b4332;
+    --input-border: #40916c;
+    --input-bg: #f8fff9;
+    --input-text: #081c15;
+    --focus: #1b4332;
+    --focus-ring: rgba(27, 67, 50, 0.28);
+    --btn: #1b4332;
+    --btn-hover: #081c15;
+    --btn-text: #ffffff;
+    --result-bg: #f1faee;
+    --result-border: #74c69d;
+    --result-text: #081c15;
+    --link: #1b4332;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--bg-1), var(--bg-2)) fixed;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    max-width: 820px;
+    margin: 32px auto;
+    padding: 28px;
+    background: linear-gradient(135deg, var(--card-1), var(--card-2));
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    box-shadow: 0 14px 32px var(--card-shadow);
+}
+
+.container-wide {
+    max-width: 1100px;
+}
+
+.nav-back {
+    display: inline-block;
+    margin-bottom: 14px;
+}
+
+a {
+    color: var(--link);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--heading);
+}
+
+/* ---------- sekcije i polja ---------- */
+
+.sekcija {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 0 20px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, var(--section-1), var(--section-2));
+    border: 1px solid var(--section-border);
+    border-radius: var(--radius);
+}
+
+.podsekcija {
+    margin: 0;
+    font-weight: 700;
+    color: var(--sub);
+}
+
+.zakon {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.pomocni-tekst {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.polje {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.polje label,
+.polje .oznaka {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sub);
+}
+
+.polje-par {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 16px; /* 16px sprječava zoom na iPhoneu */
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 1px;
+    border-color: var(--focus);
+}
+
+input:disabled,
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input.invalid,
+select.invalid {
+    border-color: var(--danger);
+    background-color: var(--danger-bg);
+    box-shadow: 0 0 0 3px rgba(164, 22, 26, 0.18);
+}
+
+/* radio gumbi (bezalkoholna pića) */
+.radio-group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.radio-group legend {
+    padding: 0;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sub);
+}
+
+.radio-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--input-text);
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+}
+
+.radio-options input {
+    margin: 0;
+    accent-color: var(--btn);
+}
+
+/* ---------- gumbi ---------- */
+
+button {
+    font: inherit;
+}
+
+.gumb-izracunaj,
+.print-pdf-btn {
+    min-height: 50px;
+    padding: 12px 22px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--btn-text);
+    background-color: var(--btn);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gumb-izracunaj:hover,
+.print-pdf-btn:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+}
+
+.gumb-izracunaj:active,
+.print-pdf-btn:active {
+    transform: translateY(0);
+}
+
+.gumb-kopiraj {
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--result-text);
+    background: transparent;
+    border: 1px solid var(--result-border);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gumb-kopiraj:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- rezultat ---------- */
+
+.rezultat {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    color: var(--result-text);
+    background-color: var(--result-bg);
+    border: 1px solid var(--result-border);
+    border-radius: 12px;
+    transition: opacity 0.2s ease;
+}
+
+.rezultat:empty,
+.rezultat-prazno {
+    color: var(--result-text);
+    opacity: 0.75;
+}
+
+.rezultat-lista {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    margin: 0;
+}
+
+.rezultat-lista dt {
+    margin: 0;
+}
+
+.rezultat-lista dd {
+    margin: 0;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.rezultat-lista hr {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 4px 0;
+    border: 0;
+    border-top: 1px solid var(--result-border);
+}
+
+.rezultat-ukupno {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-top: 2px solid var(--result-border);
+}
+
+.rezultat-ukupno strong {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.rezultat-napomena {
+    margin: 12px 0 0;
+    font-size: 0.92rem;
+}
+
+.rezultat-greska {
+    color: var(--danger);
+    background-color: var(--danger-bg);
+    border-color: var(--danger);
+}
+
+.rezultat-greska .rezultat-naslov {
+    margin: 0 0 6px;
+    font-weight: 700;
+}
+
+.rezultat-greska ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.rezultat.zastarjelo {
+    opacity: 0.55;
+}
+
+.rezultat.zastarjelo::before {
+    content: "Unos je promijenjen. Klikni Izračunaj za novi rezultat.";
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--danger);
+}
+
+/* ---------- footer ---------- */
+
+.page-footer {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 10px 20px 28px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+.page-footer p {
+    margin: 4px 0;
+}
+
+/* ---------- F-GAS tablica ---------- */
+
+.tablica-omotac {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--result-bg);
+}
+
+th,
+td {
+    padding: 8px;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    border: 1px solid var(--section-border);
+}
+
+th {
+    color: #ffffff;
+    text-align: center;
+    background-color: var(--heading);
+}
+
+td input[type="text"],
+td select {
+    min-height: 40px;
+    padding: 6px 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+td input[type="text"] {
+    min-width: 80px;
+    text-align: center;
+}
+
+td select {
+    min-width: 150px;
+}
+
+.excel-ref {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.result-highlight {
+    font-weight: 700;
+    text-align: center;
+    color: var(--heading);
+    background-color: var(--card-1);
+    font-variant-numeric: tabular-nums;
+}
+
+.final-result {
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2d6a4f;
+    font-variant-numeric: tabular-nums;
+}
+
+.total-row td {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.total-label {
+    text-align: right;
+    background-color: var(--card-2);
+    color: var(--text);
+}
+
+.empty-cell {
+    background-color: var(--card-1);
+}
+
+.action-cell {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.icon-btn {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 4px 6px;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.small-note {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--muted);
+}
+
+.print-pdf-btn {
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.print-status {
+    min-height: 1.4em;
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--danger);
+}
+
+/* ---------- mobitel ---------- */
+
+@media (max-width: 700px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        margin: 12px;
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .sekcija {
+        padding: 14px;
+    }
+
+    .polje-par {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .gumb-izracunaj {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .container {
+        box-shadow: none;
+        border: 0;
+    }
+
+    .nav-back,
+    .gumb-izracunaj,
+    .gumb-kopiraj,
+    .print-pdf-btn {
+        display: none;
+    }
+}

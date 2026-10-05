@@ -19,7 +19,7 @@ Na taj način projekt nije zamišljen samo kao tehnička vježba, nego kao prakt
 * JavaScript
 * Vanilla JS
 * DOM manipulacija
-* Local file struktura
+* Hostano na Vercelu (statične datoteke, bez build koraka)
 
 ---
 
@@ -89,25 +89,41 @@ Primjeri obračuna uključuju:
 
 ---
 
+## Struktura projekta
+
+```
+index.html          početna stranica s karticama
+pages/              po jedna stranica za svaki kalkulator
+css/style.css       stil početne stranice
+css/calculator.css  zajednički stil svih kalkulatora (boje po kategoriji u [data-theme])
+js/rates.js         SVE STOPE NA JEDNOM MJESTU
+js/utilities.js     čitanje brojeva, validacija, prikaz rezultata
+js/<kalkulator>.js  logika pojedinog kalkulatora
+```
+
+### Ažuriranje stopa
+
+Sve stope (PDV, trošarine, carine, posebni porezi) nalaze se u `js/rates.js`.
+Kad se propis promijeni, mijenja se samo taj file; kalkulatori ga automatski koriste.
+
+### Unos brojeva
+
+Polja prihvaćaju hrvatski i engleski zapis (`1.234,56`, `1234,56`, `1234.56`).
+Prazni ili neispravni unosi ne daju rezultat, nego se prikazuje poruka što treba ispraviti.
+
+### F-gas certifikat
+
+Gumb "Ispiši PDF certifikat" otvara `documents/fgas-certifikat.pdf`. Ta datoteka je u `.gitignore`,
+pa na Vercelu postoji samo ako je dodana u deploy; inače se prikazuje poruka da PDF nije dostupan.
+
 ## Trenutni status
 
-Projekt je u razvoju.
+Završeni kalkulatori: kava, bezalkoholna pića, alkohol, duhan i F-gas.
 
-Trenutno su u fokusu:
+Planirano:
 
-* kalkulator za kavu
-* kalkulator za bezalkoholna pića
-* početna navigacijska stranica
-* vizualno odvajanje pojedinih kategorija proizvoda
-
-Planirano je daljnje proširenje za:
-
-* alkoholna pića
-* duhanske proizvode
-* dodatne validacije
-* bolji prikaz grešaka
 * detaljnije objašnjenje obračuna
-* moguće spremanje ili izvoz rezultata
+* export u PDF / Excel
 
 ---
 

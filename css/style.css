@@ -4,59 +4,76 @@
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #ded7cc, #c8c1b6);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.45;
+    background: linear-gradient(135deg, #ded7cc, #c8c1b6) fixed;
     color: #2b2118;
+}
+
+main {
+    flex: 1;
 }
 
 .home-container {
     max-width: 1100px;
-    margin: 60px auto;
+    margin: 50px auto 0;
     padding: 30px;
     text-align: center;
 }
 
 .home-container h1 {
-    margin-bottom: 40px;
+    margin: 0 0 40px;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
     color: #2b2118;
-    letter-spacing: 1px;
 }
 
 .card-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 28px;
 }
 
 .home-card {
-    min-height: 220px;
-    padding: 35px 30px;
-    border-radius: 22px;
-    text-decoration: none;
-    color: #241914;
-    border: 1px solid rgba(60, 40, 30, 0.25);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 200px;
+    padding: 32px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-decoration: none;
+    color: #241914;
+    border: 1px solid rgba(60, 40, 30, 0.25);
+    border-radius: 22px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.home-card:hover {
+.home-card:hover,
+.home-card:focus-visible {
     transform: translateY(-6px);
     box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
 }
 
+.home-card:focus-visible {
+    outline: 3px solid #2b2118;
+    outline-offset: 3px;
+}
+
 .home-card h2 {
-    margin: 0 0 15px;
-    font-size: 26px;
+    margin: 0 0 12px;
+    font-size: 1.55rem;
+    line-height: 1.2;
 }
 
 .home-card p {
     margin: 0;
-    font-size: 17px;
+    font-size: 1.05rem;
     line-height: 1.5;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* KAVA - macchiato / bijela kava */
@@ -79,52 +96,31 @@ body {
 
 /* DUHAN - zemljano / tamni list */
 .card-tobacco {
-    background: linear-gradient(135deg, #b88a5d, #6d4024);
-    color: #fff4e8;
-}
-
-.card-tobacco h2,
-.card-tobacco p {
+    background: linear-gradient(135deg, #a07048, #5a321c);
     color: #fff4e8;
 }
 
 /* F-GAS - zelene / ekološke nijanse */
 .card-fgas {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
     background: linear-gradient(135deg, #b7e4c7, #40916c);
     color: #081c15;
 }
 
-.card-fgas h2,
-.card-fgas p {
-    color: #081c15;
-}
-
-.card-fgas {
-    grid-column: 1 / -1;
-    max-width: 520px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.home-container {
-    max-width: 1100px;
-    margin: 60px auto 0;
-    padding: 30px;
-    text-align: center;
-}
-
 .page-footer {
+    max-width: 850px;
+    margin: 60px auto 0;
+    padding: 0 20px 28px;
     text-align: center;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    font-size: 14px;
+    font-size: 0.85rem;
     color: #2b2118;
 }
 
-footer {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
+.page-footer p {
+    margin: 4px 0;
 }
 
 .version-badge {
@@ -132,17 +128,13 @@ footer {
     right: 10px;
     bottom: 10px;
     z-index: 9999;
-
-    background: #2f3441;
-    color: #ffffff;
-
-    padding: 8px 14px;
-    border-radius: 8px;
-
-    font-size: 1.2rem;
+    padding: 6px 12px;
+    font-size: 0.9rem;
     font-weight: 500;
     line-height: 1;
-
+    color: #ffffff;
+    background: #2f3441;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -152,11 +144,23 @@ footer {
     }
 
     .home-container {
-        margin: 30px auto;
-        padding: 20px;
+        margin: 24px auto 0;
+        padding: 16px;
+    }
+
+    .home-container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
     }
 
     .home-card {
-        min-height: 180px;
+        min-height: 150px;
+        padding: 24px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
     }
 }

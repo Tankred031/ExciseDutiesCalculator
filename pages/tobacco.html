@@ -5,69 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trošarine na duhanske proizvode</title>
-    <link rel="stylesheet" href="../css/tobacco.css">
+    <link rel="icon" href="../assets/duty-free.png" type="image/png">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <script src="../js/rates.js" defer></script>
     <script src="../js/utilities.js" defer></script>
     <script src="../js/tobacco.js" defer></script>
 </head>
 
-<body>
+<body data-theme="tobacco">
+    <main>
     <div class="container">
-        <h2>TROŠARINE NA DUHANSKE PROIZVODE</h2>
+        <a class="nav-back" href="../index.html">← Povratak na početnu</a>
+        <h1>Trošarine na duhanske proizvode</h1>
 
-        <div class="trosarina">
-            <p class="podsekcija">Izračun trošarine na duhanske proizvode:</p>
-            <p style="font-size: small; font-weight: bold" ;><em>prema Zakonu o trošarinama na 'NN' 106/18, 156/22</em>
-            </p>
+        <form id="kalkulator" novalidate>
+            <section class="sekcija">
+                <p class="podsekcija">Trošarina na duhanske proizvode</p>
+                <p class="zakon">prema Zakonu o trošarinama 'NN' 106/18, 156/22</p>
 
-            <select id="vrstaProizvoda">
-                <option value="">Odaberi vrstu proizvoda</option>
-                <option value="2401">2401 Neprerađeni duhan</option>
-                <option value="240220">2402 20 Cigarete</option>
-                <option value="240210">2402 10 Cigare i cigarilosi</option>
-                <option value="2403">2403 Rezani duhan / ostali duhan za pušenje</option>
-                <option value="240411">2404 11 Grijani duhanski proizvod</option>
-                <option value="240412">2404 12 E-tekućina</option>
-            </select>
+                <div class="polje">
+                    <label for="vrstaProizvoda">Vrsta proizvoda</label>
+                    <select id="vrstaProizvoda">
+                        <option value="">Odaberi vrstu proizvoda</option>
+                        <option value="2401">2401 Neprerađeni duhan</option>
+                        <option value="240220">2402 20 Cigarete</option>
+                        <option value="240210">2402 10 Cigare i cigarilosi</option>
+                        <option value="2403">2403 Rezani duhan / ostali duhan za pušenje</option>
+                        <option value="240411">2404 11 Grijani duhanski proizvod</option>
+                        <option value="240412">2404 12 E-tekućina</option>
+                    </select>
+                </div>
 
-            <div class="trosarina">
-                <p class="podsekcija">Količina:</p>
+                <div class="polje">
+                    <label for="kolicina" id="oznakaKolicine">Količina</label>
+                    <input id="kolicina" type="text" inputmode="decimal" autocomplete="off" placeholder="Unesi količinu">
+                    <p class="pomocni-tekst" id="opisKolicine">
+                        Za cigarete/cigare unosi se broj komada, za duhan kg, za e-tekućinu ml.
+                    </p>
+                </div>
+            </section>
 
-                <input id="kolicina" type="text" inputmode="decimal" placeholder="Unesi količinu">
+            <section class="sekcija" id="cigaretePodaci" hidden>
+                <p class="podsekcija">Dodatni podaci za cigarete</p>
 
-                <p class="pomocni-tekst" id="opisKolicine">
-                    Za cigarete/cigare unosi se broj komada, za duhan kg, za e-tekućinu ml.
-                </p>
-            </div>
+                <div class="polje-par">
+                    <div class="polje">
+                        <label for="mpc">MPC po paketiću (€)</label>
+                        <input id="mpc" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 4,50">
+                    </div>
 
-            <div class="trosarina" id="cigaretePodaci">
-                <p class="podsekcija">Dodatni podaci za cigarete:</p>
+                    <div class="polje">
+                        <label for="komadaPoPaketicu">Komada po paketiću</label>
+                        <input id="komadaPoPaketicu" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 20 ili 25">
+                    </div>
+                </div>
+            </section>
 
-                <input id="mpc" type="text" inputmode="decimal" placeholder="Unesi MPC po paketiću">
-                <input id="komadaPoPaketicu" type="text" inputmode="decimal" placeholder="Unesi broj komada po paketiću, npr. 20 ili 25">
-            </div>
+            <section class="sekcija">
+                <p class="podsekcija">Vrijednost robe i PDV</p>
 
-            <div class="pdv">
-                <p class="podsekcija">Izračun PDV-a:</p>
+                <div class="polje">
+                    <label for="vrijednostRobe">Vrijednost robe (€)</label>
+                    <input id="vrijednostRobe" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 3500,00">
+                </div>
 
-                <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
+            <div id="rezultat" class="rezultat rezultat-prazno" role="status" aria-live="polite">Unesi podatke i klikni „Izračunaj“.</div>
 
-                                
-                <div id="rezultat"></div>
+            <button type="submit" class="gumb-izracunaj">Izračunaj</button>
+            </section>
+        </form>
+    </div>
+    </main>
 
-                <button id="izracunajBtn">Izračunaj</button>
-            </div>
-
-            <p>
-                <a href="../index.html">← Povratak na početnu</a>
-            </p>
-        </div>
-
-        <footer class="page-footer">
-            <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
-            <em>Created by: Tankred Kralj</em><br>
-        </footer>
-
-
+    <footer class="page-footer">
+        <p>Alat je pomoćni. Stope i propise provjeri u službenim izvorima.</p>
+        <p><em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em></p>
+        <p><em>Created by: Tankred Kralj</em></p>
+    </footer>
 </body>
 
 </html>

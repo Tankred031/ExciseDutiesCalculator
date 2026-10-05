@@ -5,89 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poseban porez na bezalkoholna pića</title>
-    <link rel="stylesheet" href="../css/drinks.css">
+    <link rel="icon" href="../assets/duty-free.png" type="image/png">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <script src="../js/rates.js" defer></script>
     <script src="../js/utilities.js" defer></script>
     <script src="../js/drinks.js" defer></script>
-
 </head>
 
-<body>
+<body data-theme="drinks">
+    <main>
     <div class="container">
-        <h2>POSEBAN POREZ NA BEZALKOHOLNA PIĆA</h2>
+        <a class="nav-back" href="../index.html">← Povratak na početnu</a>
+        <h1>Poseban porez na bezalkoholna pića</h1>
 
-        <div class="trosarina">
-            <p class="podsekcija">Izračun posebnog poreza na bezalkoholna pića:</p>
-            <p style="font-size: small; font-weight: bold";><em>prema Zakonu o posebnom porezu na kavu i bezalkoholna
-                    pića 'NN' 1/05, 121/19, 22/20</em></p>
+        <form id="kalkulator" novalidate>
+            <section class="sekcija">
+                <p class="podsekcija">Poseban porez na bezalkoholna pića</p>
+                <p class="zakon">prema Zakonu o posebnom porezu na kavu i bezalkoholna pića 'NN' 1/05, 121/19, 22/20</p>
 
-            <input id="litara" type="text" inputmode="decimal" placeholder="Unesi količinu u litrama">
-
-            <div class="radio-group">
-                <p class="mini-naslov">Vrsta proizvoda:</p>
-
-                <div class="radio-options">
-                    <label>
-                        <input type="radio" name="tipProizvoda" value="pice" checked>
-                        Sok
-                    </label>
-
-                    <label>
-                        <input type="radio" name="tipProizvoda" value="sirup">
-                        Sirup
-                    </label>
+                <div class="polje">
+                    <label for="litara">Količina (litre)</label>
+                    <input id="litara" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 5000">
                 </div>
-            </div>
 
-            <select id="vrstaProizvoda">
-                <option value="">Odaberi tarifni broj</option>
-                <option value="2009">2009 Voćni sokovi s dodanim šećerom (negazirani)</option>
-                <option value="220210">2202 10 Vode sa sladilima/šećerom (Coca-cola, Cedevita) </option>
-                <option value="220291">2202 91 Bezalkoholno pivo</option>
-                <option value="2205" disabled>2205 Vermuti s alk. manjim od 1.2%</option>
-                <option value="2206" disabled>2206 Jabukovače, medovine s alk. manjim od 1.2%</option>
-                <option value="2208" disabled>2208 Likeri s alk. manjim od 1.2%</option>
-            </select>
-        </div>
+                <fieldset class="radio-group">
+                    <legend>Vrsta proizvoda</legend>
 
-        <div class="trosarina">
-            <p class="podsekcija">Osnova dodatnog obračuna:</p>
+                    <div class="radio-options">
+                        <label>
+                            <input type="radio" name="tipProizvoda" value="pice" checked>
+                            Sok
+                        </label>
 
-            <select id="osnovaObracuna">
-                <option value="secer">Šećer</option>
-                <option value="taurin">Taurin</option>
-                <option value="metilKsantin">Metil-ksantin</option>
-            </select>
+                        <label>
+                            <input type="radio" name="tipProizvoda" value="sirup">
+                            Sirup
+                        </label>
+                    </div>
+                </fieldset>
 
-            <select id="sadrzaj">
-                <option value="">Odaberi kategoriju</option>
-            </select>
-        </div>
+                <div class="polje">
+                    <label for="vrstaProizvoda">Tarifni broj</label>
+                    <select id="vrstaProizvoda">
+                        <option value="">Odaberi tarifni broj</option>
+                        <option value="2009">2009 Voćni sokovi s dodanim šećerom (negazirani)</option>
+                        <option value="220210">2202 10 Vode sa sladilima/šećerom (Coca-Cola, Cedevita)</option>
+                        <option value="220291">2202 91 Bezalkoholno pivo</option>
+                        <option value="2205" disabled>2205 Vermuti s alk. manjim od 1.2%</option>
+                        <option value="2206" disabled>2206 Jabukovače, medovine s alk. manjim od 1.2%</option>
+                        <option value="2208" disabled>2208 Likeri s alk. manjim od 1.2%</option>
+                    </select>
+                </div>
+            </section>
 
-        <div class="carina">
-            <p class="podsekcija">Unesi vrijednost robe:</p>
+            <section class="sekcija">
+                <p class="podsekcija">Osnova dodatnog obračuna</p>
 
-            <input id="vrijednostRobe" type="text" inputmode="decimal" placeholder="Unesi vrijednost robe u €">
-        </div>
+                <div class="polje">
+                    <label for="osnovaObracuna">Osnova</label>
+                    <select id="osnovaObracuna">
+                        <option value="secer">Šećer</option>
+                        <option value="taurin">Taurin</option>
+                        <option value="metilKsantin">Metil-ksantin</option>
+                    </select>
+                </div>
 
-        <div class="pdv">
-            <p class="podsekcija">Izračun PDV-a:</p>
+                <div class="polje">
+                    <label for="sadrzaj">Kategorija</label>
+                    <select id="sadrzaj">
+                        <option value="">Odaberi kategoriju</option>
+                    </select>
+                </div>
+            </section>
 
-            <div id="rezultat"></div>
+            <section class="sekcija">
+                <p class="podsekcija">Vrijednost robe</p>
 
-            <button id="izracunajBtn">Izračunaj</button>
-        </div>
+                <div class="polje">
+                    <label for="vrijednostRobe">Vrijednost robe (€)</label>
+                    <input id="vrijednostRobe" type="text" inputmode="decimal" autocomplete="off" placeholder="npr. 3500,00">
+                </div>
+            </section>
 
-        <p>
-            <a href="../index.html">← Povratak na početnu</a>
-        </p>
+            <section class="sekcija">
+                <p class="podsekcija">Ukupna davanja (s carinom i PDV-om)</p>
+
+            <div id="rezultat" class="rezultat rezultat-prazno" role="status" aria-live="polite">Unesi podatke i klikni „Izračunaj“.</div>
+
+            <button type="submit" class="gumb-izracunaj">Izračunaj</button>
+            </section>
+        </form>
     </div>
+    </main>
 
     <footer class="page-footer">
-        <em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em><br>
-        <em>Created by: Tankred Kralj</em><br>
+        <p>Alat je pomoćni. Stope i propise provjeri u službenim izvorima.</p>
+        <p><em>ExciseDutiesCalculator 2026©. Sva prava pridržana.</em></p>
+        <p><em>Created by: Tankred Kralj</em></p>
     </footer>
-
-
 </body>
 
 </html>

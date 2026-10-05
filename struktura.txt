@@ -1,35 +1,17 @@
-Folder PATH listing
-Volume serial number is AE43-A6AC
-C:.
-|   .gitattributes
-|   .gitignore
-|   index.html
-|   README.md
-|   struktura.txt
-|   
-+---assets
-|       duty-free.png
-|       
-+---css
-|       alcohol.css
-|       coffee.css
-|       drinks.css
-|       fgas.css
-|       style.css
-|       tobacco.css
-|       
-+---js
-|       alcohol.js
-|       coffee.js
-|       drinks.js
-|       fgas.js
-|       tobacco.js
-|       utilities.js
-|       
-\---pages
-        alcohol.html
-        coffee.html
-        drinks.html
-        fgas.html
-        tobacco.html
-        
+index.html
+README.md
+assets/duty-free.png
+css/style.css          (početna stranica)
+css/calculator.css     (zajednički stil kalkulatora)
+js/rates.js            (sve stope)
+js/utilities.js        (zajedničke funkcije)
+js/coffee.js
+js/drinks.js
+js/alcohol.js
+js/tobacco.js
+js/fgas.js
+pages/coffee.html
+pages/drinks.html
+pages/alcohol.html
+pages/tobacco.html
+pages/fgas.html

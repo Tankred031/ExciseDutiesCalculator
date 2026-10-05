@@ -1,93 +1,68 @@
+const forma = document.getElementById("kalkulator");
 const litaraInput = document.getElementById("litara");
 const postotakAlkoholaInput = document.getElementById("postotakAlkohola");
 const tarifniTrosarina = document.getElementById("tarifniTrosarina");
 const vrijednostRobeInput = document.getElementById("vrijednostRobe");
 const rezultat = document.getElementById("rezultat");
-const izracunajBtn = document.getElementById("izracunajBtn");
 
-const STOPA_PDV = 0.25;
-
-const STOPE = {
-    pivo: 5.31,    
-    jakiAlkohol: 796.34
-};
-
-function dohvatiNazivTarifnogBroja(tarifniBroj) {
-    if (tarifniBroj === "220310") return "2203 10 - Pivo od slada";
-    if (tarifniBroj === "2204") return "2204 - Vino, mirno i pjenušavo";
-    if (tarifniBroj === "2205") return "2205 - Vermuti i ostala aromatizirana vina";
-    if (tarifniBroj === "2206") return "2206 - Jabukovače, medovine i ostala fermentirana pića";
-    if (tarifniBroj === "2207") return "2207 - Etilni alkohol";
-    if (tarifniBroj === "2208") return "2208 - Jaka alkoholna pića";
-
-    return "nije odabrano";
-}
+// Tarifni brojevi na koje se ne plaća trošarina (postotak alkohola nije potreban)
+const BEZ_TROSARINE = ["2204", "2205", "2206"];
 
 function izracunajTrosarinu(tarifniBroj, hektolitara, postotakAlkohola) {
-    let iznosTrosarine = 0;
-    let stopa = 0;
-    let opisObracuna = "";
-    
-
     if (tarifniBroj === "220310") {
-        stopa = STOPE.pivo;
-        iznosTrosarine = hektolitara * stopa * postotakAlkohola;
-        opisObracuna = "pivo: hektolitri × 5.31 € × % alkohola";
-
-    } else if (
-        tarifniBroj === "2204" ||
-        tarifniBroj === "2205" ||
-        tarifniBroj === "2206"
-    ) {
-        stopa = 0;
-        iznosTrosarine = 0;
-        opisObracuna = "vino, vermuti i ostala fermentirana pića: trošarina 0,00 €";
-
-    } else if (
-        tarifniBroj === "2207" ||
-        tarifniBroj === "2208"
-    ) {
-        stopa = STOPE.jakiAlkohol;
-        iznosTrosarine = hektolitara * (postotakAlkohola / 100) * stopa;
-        opisObracuna = "2207 / 2208: hektolitri × alkoholna jakost × 796.34 €";
+        return hektolitara * RATES.alcohol.pivo * postotakAlkohola;
     }
 
-    return {
-        iznosTrosarine,
-        stopa,
-        opisObracuna
-    };
+    if (tarifniBroj === "2207" || tarifniBroj === "2208") {
+        return hektolitara * (postotakAlkohola / 100) * RATES.alcohol.jakiAlkohol;
+    }
+
+    return 0;
 }
 
-function izracunajDavanja() {
-    const litara = procitajBroj(litaraInput);
+function izracunajDavanja(greske) {
+    const tarifniBroj = uzmiOdabir(tarifniTrosarina, "Tarifni broj", greske);
+    const litara = uzmiBroj(litaraInput, "Količina", greske);
+    const vrijednostRobe = uzmiBroj(vrijednostRobeInput, "Vrijednost robe", greske);
+
+    // Za vino i slično trošarina je 0, pa postotak nije obavezan
+    const postotakPotreban = !BEZ_TROSARINE.includes(tarifniBroj);
+    const postotakAlkohola = postotakPotreban
+        ? uzmiBroj(postotakAlkoholaInput, "Alkohol (% vol.)", greske, { max: 100 })
+        : 0;
+
+    if (greske.length > 0) {
+        return;
+    }
+
     const hektolitara = litara / 100;
-
-    const postotakAlkohola = procitajBroj(postotakAlkoholaInput);
-    const tarifniBroj = tarifniTrosarina.value;
-    const vrijednostRobe = procitajBroj(vrijednostRobeInput);
-
-    const obracun = izracunajTrosarinu(
-        tarifniBroj,
-        hektolitara,
-        postotakAlkohola
-    );
-
-    const iznosTrosarine = obracun.iznosTrosarine;
+    const iznosTrosarine = izracunajTrosarinu(tarifniBroj, hektolitara, postotakAlkohola);
 
     const osnovicaZaPDV = vrijednostRobe + iznosTrosarine;
-    const iznosPDV = osnovicaZaPDV * STOPA_PDV;
+    const iznosPDV = osnovicaZaPDV * RATES.pdv;
 
     const ukupnaDavanja = iznosTrosarine + iznosPDV;
 
-   rezultat.innerHTML = `
-    <p>Trošarina: ${formatBroj(iznosTrosarine)} €</p>
-    <p>PDV: ${formatBroj(iznosPDV)} €</p>
-
-    <hr>
-
-    <p><strong>Ukupna davanja: ${formatBroj(ukupnaDavanja)} €</strong></p>
-`;
+    prikaziRezultat(rezultat, {
+        redovi: [
+            { naziv: "Trošarina", iznos: iznosTrosarine },
+            { naziv: "PDV", iznos: iznosPDV }
+        ],
+        ukupno: { naziv: "Ukupna davanja", iznos: ukupnaDavanja }
+    });
 }
 
-izracunajBtn.addEventListener("click", izracunajDavanja);
+function prilagodiPolja() {
+    const bezPostotka = BEZ_TROSARINE.includes(tarifniTrosarina.value);
+
+    postotakAlkoholaInput.disabled = bezPostotka;
+
+    if (bezPostotka) {
+        postotakAlkoholaInput.value = "";
+    }
+}
+
+tarifniTrosarina.addEventListener("change", prilagodiPolja);
+
+pokreniKalkulator(forma, rezultat, izracunajDavanja);
+prilagodiPolja();

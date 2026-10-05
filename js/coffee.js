@@ -1,68 +1,46 @@
+const forma = document.getElementById("kalkulator");
 const tezinaKave = document.getElementById("tezinaKave");
 const vrijednostRobe = document.getElementById("vrijednostRobe");
-const tarifniTrosarina = document.getElementById("tarifniTrosarina")
+const tarifniTrosarina = document.getElementById("tarifniTrosarina");
 const tarifniCarina = document.getElementById("tarifniCarina");
 const rezultat = document.getElementById("rezultat");
-const izracunajBtn = document.getElementById("izracunajBtn");
 
-const stopeTrosarine = {
-    "090121": 0.8,
-    "090122": 0.8,
-    "090190": 0.8,
-    "210111": 2.65,
-    "210112": 2.65
-};
+function izracunajDavanja(greske) {
+    const tezina = uzmiBroj(tezinaKave, "Neto težina", greske);
+    const odabranaTrosarina = uzmiOdabir(tarifniTrosarina, "Tarifni broj za poseban porez", greske);
+    const vrijednost = uzmiBroj(vrijednostRobe, "Vrijednost robe", greske);
+    const odabranaCarina = uzmiOdabir(tarifniCarina, "Vrsta proizvoda (carina)", greske);
 
-const stopeCarine = {
-    "090121": 7.5,
-    "090122": 9,
-    "210111": 9,
-    "090190": 11.5,
-    "210112": 11.5,
-    "090210": 3.2,
-    "210120": 6
-}
+    if (greske.length > 0) {
+        return;
+    }
 
-
-function izracunajDavanja() {
-    const tezina = procitajBroj(tezinaKave);
-    const vrijednost = procitajBroj(vrijednostRobe);
-
-    const odabranaTrosarina = tarifniTrosarina.value;
-    const odabranaCarina = tarifniCarina.value;
-
-    const stopaTrosarine = stopeTrosarine[odabranaTrosarina] || 0;
-    const stopaCarine = stopeCarine[odabranaCarina] || 0;
+    const stopaTrosarine = RATES.coffee.trosarina[odabranaTrosarina] || 0;
+    const stopaCarine = RATES.coffee.carina[odabranaCarina] || 0;
 
     const iznosTrosarine = tezina * stopaTrosarine;
     const iznosCarine = vrijednost * stopaCarine / 100;
 
     const osnovicaZaPDV = vrijednost + iznosTrosarine + iznosCarine;
-    const iznosPDV = osnovicaZaPDV * 0.25;
+    const iznosPDV = osnovicaZaPDV * RATES.pdv;
 
     const ukupnaDavanja = iznosTrosarine + iznosCarine + iznosPDV;
 
-    let posebnaNapomena = "";
+    const napomene = [];
 
     if (odabranaCarina === "210120") {
-        posebnaNapomena = `
-        <p>
-            <strong>Napomena:</strong>
-            Tarifni broj 2101 20 podliježe posebnom porezu na bezalkoholna pića
-        </p>
-        `;
+        napomene.push("Tarifni broj 2101 20 podliježe posebnom porezu na bezalkoholna pića.");
     }
 
-    rezultat.innerHTML = `
-        <p>Trošarina: ${iznosTrosarine.toFixed(2)} €</p>
-        <p>Carina: ${iznosCarine.toFixed(2)} €</p>
-        <p>PDV: ${iznosPDV.toFixed(2)} €</p>
-        <hr>
-        <p><strong>Ukupna davanja: ${ukupnaDavanja.toFixed(2)} €</strong></p>
-
-        ${posebnaNapomena}
-        `;
-    
+    prikaziRezultat(rezultat, {
+        redovi: [
+            { naziv: "Trošarina", iznos: iznosTrosarine },
+            { naziv: "Carina", iznos: iznosCarine },
+            { naziv: "PDV", iznos: iznosPDV }
+        ],
+        ukupno: { naziv: "Ukupna davanja", iznos: ukupnaDavanja },
+        napomene
+    });
 }
 
-izracunajBtn.addEventListener("click", izracunajDavanja);
+pokreniKalkulator(forma, rezultat, izracunajDavanja);
